@@ -1,0 +1,5 @@
+S2 Geometry was used to cover the surface of the earth with 24576 roughly equal sized regions (sectors), which were then filtered with GEE data in order to keep only the sectors with at least 0.2% land, leaving 8065.
+
+The 24576 sectors were all the S2CellIds at depth 6. They were filtered into 2 disjoint sets: Those with at least one coordinate with latitude between 60° and -60°, and those with at least one coordinate with latitude less than 82.75°, and no coordinates with latitude less than 60°. The ESA WorldCover v200 land cover dataset was used to produce counts of each land cover type in each sector, for the first set with 100m resolution, and 300m for the second. The 8 sectors that had at least one coordinate with latitude over 82.75° had their land cover determined by the GlobCover dataset instead.
+
+The mapping from NFT id to sector is random. The sectors are listed (using their S2 cell ids as identifiers) in order of their NFT ids (from 0 to 8064) in sector_order.txt. The keccak256 hash of this file is stored in the contract on-chain.
